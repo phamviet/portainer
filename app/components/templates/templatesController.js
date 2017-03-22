@@ -98,14 +98,20 @@ function ($scope, $q, $state, $anchorScroll, Config, ContainerService, Container
     } else {
       $scope.formValues.network = _.find($scope.availableNetworks, function(o) { return o.Name === "bridge"; });
     }
+    if (selectedTemplate.RestartPolicy) {
+      $scope.formValues.restartPolicy = selectedTemplate.RestartPolicy;
+    }
     $anchorScroll('selectedTemplate');
   }
 
   function createTemplateConfiguration(template) {
     var network = $scope.formValues.network;
+    var restartPolicy = $scope.formValues.restartPolicy;
     var name = $scope.formValues.name;
     var containerMapping = determineContainerMapping(network);
-    return TemplateService.createTemplateConfiguration(template, name, network, containerMapping);
+    var templateConfiguration = TemplateService.createTemplateConfiguration(template, name, network, containerMapping);
+      templateConfiguration.HostConfig.RestartPolicy.Name = restartPolicy;
+    return templateConfiguration;
   }
 
   function determineContainerMapping(network) {

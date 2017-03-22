@@ -53,6 +53,30 @@
             </div>
           </div>
           <!-- !env -->
+          <!-- restart-policy -->
+          <div class="form-group">
+            <label class="col-sm-1 control-label text-left">Restart policy</label>
+            <div class="col-sm-11">
+              <label class="radio-inline">
+                <input type="radio" ng-model="formValues.restartPolicy" value="no">
+                Never
+              </label>
+
+              <label class="radio-inline">
+                <input type="radio" ng-model="formValues.restartPolicy" value="always">
+                Always
+              </label>
+              <label class="radio-inline">
+                <input type="radio" ng-model="formValues.restartPolicy" value="on-failure">
+                <span class="radio-value">On failure</span>
+              </label>
+              <label class="radio-inline">
+                <input type="radio" ng-model="formValues.restartPolicy" value="unless-stopped">
+                <span class="radio-value">Unless stopped</span>
+              </label>
+            </div>
+          </div>
+          <!-- !restart-policy -->
           <!-- ownership -->
           <div class="form-group" ng-if="applicationState.application.authentication">
             <div class="col-sm-12">

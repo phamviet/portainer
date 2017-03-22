@@ -6,6 +6,7 @@ function TemplateViewModel(data) {
   this.Registry = data.registry ? data.registry : '';
   this.Command = data.command ? data.command : '';
   this.Network = data.network ? data.network : '';
+  this.RestartPolicy = data.restartPolicy ? data.restartPolicy : '';
   this.Env = data.env ? data.env : [];
   this.Privileged = data.privileged ? data.privileged : false;
   this.Volumes = [];
